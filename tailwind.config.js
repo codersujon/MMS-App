@@ -13,7 +13,7 @@ export default {
     theme: {
         extend: {
             fontFamily: {
-                sans: ['Figtree', ...defaultTheme.fontFamily.sans],
+                body: ['Roboto']
             },
         },
     },
@@ -21,14 +21,5 @@ export default {
     plugins: [
         forms,
         require('flowbite/plugin')
-    ],
-    fontFamily: {
-            'body': [
-        'Roboto'
-        ],
-            'sans': [
-        'Roboto', 
-        'ui-sans-serif'
-        ]
-    }
+    ]
 };

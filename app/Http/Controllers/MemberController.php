@@ -29,7 +29,35 @@ class MemberController extends Controller
      */
     public function store(Request $request)
     {
-        //
+
+        $member = new Member();
+
+         // FOR IMAGE 
+        $customName = "";
+        if($image = $request->file('image')){
+            $customName = uniqid() . "-" . time() . "." .$image->getClientOriginalExtension();
+            $image = $image->move(public_path("backend/uploads/"), $customName);
+        }else{
+            $customName =  $member->image;
+        }
+
+        $member->fullName = $request->fullname;
+        $member->dob = date("Y-m-d", strtotime($request->dob));
+        $member->gender = $request->gender;
+        $member->email = $request->email;
+        $member->phone = $request->phone;
+        $member->image = $customName;
+        $member->occupation = ucwords($request->occupation);
+        $member->address = $request->address;
+        $member->join_date = date("Y-m-d", strtotime($request->joining_date));
+        $member->expire_date = date("Y-m-d", strtotime($request->expire_date));
+        $member->save();
+
+
+        return response()->json([
+            'status'=> 200,
+            'message' => "Member Created Successfully!",
+        ]);
     }
 
     /**
