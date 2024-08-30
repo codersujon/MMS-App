@@ -15,6 +15,8 @@ Route::get('/dashboard', function () {
 // Members
 Route::get('/members', [MemberController::class, 'index'])->name('members.index');
 Route::post('/members/store', [MemberController::class, 'store'])->name('members.store');
+Route::get('/members/list', [MemberController::class, 'memberList'])->name('members.list');
+Route::get('/members/destroy/{id}', [MemberController::class, 'destroy'])->name('members.destroy');
 
 
 Route::middleware('auth')->group(function () {

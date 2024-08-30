@@ -8,24 +8,28 @@ use App\Models\Member;
 class MemberController extends Controller
 {
     /**
-     * Display a listing of the resource.
+     * Manage members
      */
     public function index()
     {
-        $members = Member::latest()->get();
-        return view('backend.members.index', compact('members'));
+        
+        return view('backend.members.index');
     }
 
     /**
-     * Show the form for creating a new resource.
+     * All Member List
      */
-    public function create()
+    public function memberList()
     {
-        //
+        $members = Member::latest()->get();
+        return response()->json([
+            'status'=> 200,
+            'AllData' => $members,
+        ]);
     }
 
     /**
-     * Store a newly created resource in storage.
+     * Store Members
      */
     public function store(Request $request)
     {
@@ -53,7 +57,6 @@ class MemberController extends Controller
         $member->expire_date = date("Y-m-d", strtotime($request->expire_date));
         $member->save();
 
-
         return response()->json([
             'status'=> 200,
             'message' => "Member Created Successfully!",
@@ -63,7 +66,7 @@ class MemberController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(string $id)
+    public function show()
     {
         //
     }
@@ -89,6 +92,13 @@ class MemberController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        $member = Member::findOrFail($id);
+        @unlink(public_path("backend/uploads/".$member->image));
+        $member->delete();
+
+        return response()->json([
+            'status'=> 200,
+            'message' => "Member Deleted Successfully!",
+        ]);
     }
 }
