@@ -47,6 +47,27 @@ class PaymentController extends Controller
             'status'=> 200,
             'message' => "Payment Created Successfully!",
         ]);
+    }
 
+    /**
+     * All Payment List
+     */
+    public function allPayments(){
+        $payments = Payment::orderBy('payment_date','DESC')->get();
+        return response()->json(['status'=> 200, 'AllData' => $payments]);
+    }
+
+
+    /**
+     * Payment Destroy
+     */
+    public function destroy(String $id){
+        $payment = Payment::findOrFail($id);
+        $payment->delete();
+
+        return response()->json([
+            'status'=> 200,
+            'message' => "Payment Deleted!",
+        ]);
     }
 }
