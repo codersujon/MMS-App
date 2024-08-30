@@ -29,4 +29,29 @@ class PenaltySettingController extends Controller
             'message' => "Penalty Created Successfully!",
         ]);
      }
+
+    /**
+     * Penalty List
+     */
+    public function allPenalty(){
+        $penalties = PenaltySetting::orderBy('penalty_days', 'ASC')->get();
+        return response()->json([
+            'status'=> 200,
+            'AllData' => $penalties,
+        ]);
+    }
+
+
+    /**
+     * Penalty Destroy
+     */
+    public function penaltyDestroy(string $id){
+        $penalty = PenaltySetting::findOrFail($id);
+        $penalty->delete();
+
+        return response()->json([
+            'status'=> 200,
+            'message' => "Penalty Deleted!",
+        ]);
+    }
 }

@@ -54,19 +54,14 @@
                     <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
                         <tr>
                             <th scope="col" class="px-4 py-3">#Id</th>
-                            <th scope="col" class="px-4 py-3">Member Id</th>
-                            <th scope="col" class="px-4 py-3">Plans Date</th>
-                            <th scope="col" class="px-4 py-3">Total Amount</th>
-                            <th scope="col" class="px-4 py-3">Plans Duration</th>
-                            <th scope="col" class="px-4 py-3">Monthly Installment</th>
-                            <th scope="col" class="px-4 py-3">Plans Expire Date</th>
-                            <th scope="col" class="px-4 py-3">Status</th>
+                            <th scope="col" class="px-4 py-3">Penalty Days</th>
+                            <th scope="col" class="px-4 py-3">Penalty percentage (%)</th>
                             <th scope="col" class="px-4 py-3">
                                 <span class="sr-only">Actions</span>
                             </th>
                         </tr>
                     </thead>
-                    <tbody class="InstallmentsList">
+                    <tbody class="PenaltyList">
                         
                     </tbody>
                 </table>

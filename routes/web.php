@@ -26,9 +26,12 @@ Route::post('/members/plans/store', [MemberPlanController::class, 'store'])->nam
 Route::get('/members/plans/all', [MemberPlanController::class, 'allPlans'])->name('members.plans.all');
 Route::get('/members/plans/destroy/{id}', [MemberPlanController::class, 'destroyPlans'])->name('members.plans.destroy');
 
+
 // Penalty Settings
 Route::get('/penalty/settings', [PenaltySettingController::class, 'index'])->name('penalty.settings.index');
 Route::post('/penalty/store', [PenaltySettingController::class, 'store'])->name('penalty.settings.store');
+Route::get('/penalty/all', [PenaltySettingController::class, 'allPenalty'])->name('penalty.all');
+Route::get('/penalty/destroy/{id}', [PenaltySettingController::class, 'penaltyDestroy'])->name('penalty.destroy');
 
 
 Route::middleware('auth')->group(function () {
