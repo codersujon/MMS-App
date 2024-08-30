@@ -3,6 +3,7 @@
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\MemberController;
 use App\Http\Controllers\MemberPlanController;
+use App\Http\Controllers\PenaltySettingController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
@@ -24,6 +25,10 @@ Route::get('/members/plans', [MemberPlanController::class, 'index'])->name('memb
 Route::post('/members/plans/store', [MemberPlanController::class, 'store'])->name('members.plans.store');
 Route::get('/members/plans/all', [MemberPlanController::class, 'allPlans'])->name('members.plans.all');
 Route::get('/members/plans/destroy/{id}', [MemberPlanController::class, 'destroyPlans'])->name('members.plans.destroy');
+
+// Penalty Settings
+Route::get('/penalty/settings', [PenaltySettingController::class, 'index'])->name('penalty.settings.index');
+Route::post('/penalty/store', [PenaltySettingController::class, 'store'])->name('penalty.settings.store');
 
 
 Route::middleware('auth')->group(function () {

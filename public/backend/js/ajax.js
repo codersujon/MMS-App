@@ -294,4 +294,45 @@ $(document).ready(function () {
 
     });
 
+    // Add Penalty
+    $("#penalty_form").on("submit", function (e) {
+        e.preventDefault();
+
+        var formData = new FormData($("#penalty_form")[0]);
+
+        $.ajax({
+            url: "/penalty/store",
+            method: "POST",
+            data: formData,
+            dataType: "JSON",
+            contentType: false, // Illegal Innovation error if not written
+            processData: false, // Illegal Innovation error if not written
+            success: function (data) {
+                if (data.status == 200) {
+
+                    // Handle success
+                    const Toast = Swal.mixin({
+                        toast: true,
+                        position: "top-end",
+                        showConfirmButton: false,
+                        timer: 3000,
+                        timerProgressBar: true,
+                        didOpen: (toast) => {
+                          toast.onmouseenter = Swal.stopTimer;
+                          toast.onmouseleave = Swal.resumeTimer;
+                        }
+                      });
+                      Toast.fire({
+                        icon: "success",
+                        title: data.message
+                      });
+                    
+                    $("#penalty-modal").addClass('hidden');
+                    $(".inset-0").removeClass();
+                    $('#penalty_form')[0].reset();
+                }
+            }
+        });
+    })
+
 });

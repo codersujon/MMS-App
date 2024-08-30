@@ -4,7 +4,7 @@
   "settings": {
     "width": 2000,
     "height": 2000,
-    "scrollTop": -584.8347,
+    "scrollTop": -384.8347,
     "scrollLeft": -22,
     "zoomLevel": 1,
     "show": 431,
@@ -617,7 +617,7 @@
         "tableId": "eW1ZRV3Q8uMzUy4AYFpuu",
         "name": "penalty_days",
         "comment": "",
-        "dataType": "",
+        "dataType": "INTEGER",
         "default": "",
         "options": 0,
         "ui": {
@@ -628,7 +628,7 @@
           "widthDefault": 60
         },
         "meta": {
-          "updateAt": 1724892554393,
+          "updateAt": 1725026755101,
           "createAt": 1724892547485
         }
       },
@@ -1157,7 +1157,8 @@
       1724892547485,
       -1,
       {
-        "name": 1724892554387
+        "name": 1724892554387,
+        "dataType": 1725026755100
       }
     ],
     "QSJ6HlluLGYt5d48PdJjc": [
