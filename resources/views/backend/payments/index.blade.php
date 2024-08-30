@@ -1,7 +1,7 @@
 @extends('backend.layouts.body')
 
 @section('main')
-<!-- Breadcrumb -->
+<!-- breadcrumb start -->
 <nav class="flex" aria-label="Breadcrumb">
     <ol class="inline-flex items-center space-x-1 md:space-x-2 rtl:space-x-reverse">
         <li class="inline-flex items-center">
@@ -23,7 +23,7 @@
                         d="m1 9 4-4-4-4" />
                 </svg>
                 <a href="#"
-                    class="ms-1 text-sm font-medium text-gray-700 hover:text-blue-600 md:ms-2 dark:text-gray-400 dark:hover:text-white">Membership Plans</a>
+                    class="ms-1 text-sm font-medium text-gray-700 hover:text-blue-600 md:ms-2 dark:text-gray-400 dark:hover:text-white">Payments</a>
             </div>
         </li>
         <li aria-current="page">
@@ -33,14 +33,13 @@
                     <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                         d="m1 9 4-4-4-4" />
                 </svg>
-                <span class="ms-1 text-sm font-medium text-gray-500 md:ms-2 dark:text-gray-400">Installments List</span>
+                <span class="ms-1 text-sm font-medium text-gray-500 md:ms-2 dark:text-gray-400">All Payments</span>
             </div>
         </li>
     </ol>
-</nav>
+</nav> <!-- end -->
 
-
-<!-- membership plans list -->
+<!-- payments list -->
 <section class="bg-gray-50 dark:bg-gray-900 p-3 sm:p-5">
     <div class="mx-auto max-w-screen-xxl px-4 lg:px-12">
         <!-- Start coding here -->
@@ -177,9 +176,9 @@
             </nav>
         </div>
     </div>
-</section>
+</section> <!-- end -->
 
-<!--Add plans modal -->
+<!-- Payments modal -->
 <div id="payments-modal" tabindex="-1" aria-hidden="true"
     class="addPlans hidden overflow-y-auto overflow-x-hidden fixed top-0 right-0 left-0 z-50 justify-center items-center w-full md:inset-0 h-[calc(100%-1rem)] max-h-full">
     <div class="relative p-4 w-full max-w-xl max-h-full">
@@ -270,6 +269,6 @@
             </form>
         </div>
     </div>
-</div>
+</div><!-- end -->
 
 @endsection

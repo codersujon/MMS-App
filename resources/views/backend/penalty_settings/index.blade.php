@@ -1,7 +1,8 @@
 @extends('backend.layouts.body')
 
 @section('main')
-<!-- Breadcrumb -->
+
+<!-- breadcrumb start-->
 <nav class="flex" aria-label="Breadcrumb">
     <ol class="inline-flex items-center space-x-1 md:space-x-2 rtl:space-x-reverse">
         <li class="inline-flex items-center">
@@ -15,6 +16,7 @@
                 Home
             </a>
         </li>
+        
         <li aria-current="page">
             <div class="flex items-center">
                 <svg class="rtl:rotate-180 w-3 h-3 text-gray-400 mx-1" aria-hidden="true"
@@ -26,9 +28,9 @@
             </div>
         </li>
     </ol>
-</nav>
+</nav><!-- end -->
 
-<!-- membership plans list -->
+<!-- penalty settings list -->
 <section class="bg-gray-50 dark:bg-gray-900 p-3 sm:p-5">
     <div class="mx-auto max-w-screen-xxl px-4 lg:px-12">
         <!-- Start coding here -->
@@ -123,9 +125,9 @@
             </nav>
         </div>
     </div>
-</section>
+</section><!-- end -->
 
-<!-- Penalty modal -->
+<!-- penalty modal -->
 <div id="penalty-modal" tabindex="-1" aria-hidden="true" class="hidden overflow-y-auto overflow-x-hidden fixed top-0 right-0 left-0 z-50 justify-center items-center w-full md:inset-0 h-[calc(100%-1rem)] max-h-full">
     <div class="relative p-4 w-full max-w-md max-h-full">
         <!-- Modal content -->
@@ -165,6 +167,6 @@
             </form>
         </div>
     </div>
-</div> 
+</div><!-- end -->
   
 @endsection
