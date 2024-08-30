@@ -4,6 +4,7 @@ use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\MemberController;
 use App\Http\Controllers\MemberPlanController;
 use App\Http\Controllers\PenaltySettingController;
+use App\Http\Controllers\PaymentController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
@@ -32,6 +33,13 @@ Route::get('/penalty/settings', [PenaltySettingController::class, 'index'])->nam
 Route::post('/penalty/store', [PenaltySettingController::class, 'store'])->name('penalty.settings.store');
 Route::get('/penalty/all', [PenaltySettingController::class, 'allPenalty'])->name('penalty.all');
 Route::get('/penalty/destroy/{id}', [PenaltySettingController::class, 'penaltyDestroy'])->name('penalty.destroy');
+
+
+// Payments
+Route::get('/payments/all', [PaymentController::class, 'index'])->name('payments.all.index');
+
+Route::get('/get-installment/{id}', [PaymentController::class, 'getInstallment'])->name('get-installment');
+
 
 
 Route::middleware('auth')->group(function () {

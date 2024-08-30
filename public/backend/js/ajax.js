@@ -194,7 +194,7 @@ $(document).ready(function () {
                     
                     plansData()
 
-                    $("#crud-modal").addClass('hidden');
+                    $("#plans-modal").addClass('hidden');
                     $(".inset-0").removeClass();
                     $('#plans_form')[0].reset();
                 }
@@ -217,9 +217,9 @@ $(document).ready(function () {
                         <tr class="border-b dark:border-gray-700">
                             <td class="px-4  py-1">${key+1}</td>
                             <td class="px-4 py-1">${val.member_id}</td>
-                            <td class="px-4 py-1">${val.total_amount}</td>
-                            <td class="px-4 py-1">${val.plans_duration} Months</td>
                             <td class="px-4 py-1">${val.payment_date}</td>
+                            <td class="px-4 py-1">${val.total_amount} </td>
+                            <td class="px-4 py-1">${val.plans_duration} Months</td>
                             <td class="px-4 py-1">${val.monthly_installment}</td>
                             <td class="px-4 py-1">${val.plans_expire_date}</td>
                             <td class="px-4 py-1">
@@ -414,6 +414,25 @@ $(document).ready(function () {
             }
         });
 
+    });
+
+
+     // GET INSTALLMENT AMOUNT WITH THE HELP OF MEMBER ID
+     $(document).on("change", "#member_id", function(){
+        var member_id = $(this).val();
+        
+       $.ajax({
+            url: "/get-installment/" + member_id,
+            type: "GET",
+            dataType: "JSON",
+            success: function(response){
+                var monthly_installment ="";
+                $.each(response.allData, function(key, value){
+                    monthly_installment += `${value.monthly_installment}`;
+                });
+                $("#monthly_installment").val(monthly_installment)
+            }
+       });
     });
 
 });

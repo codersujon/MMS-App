@@ -66,8 +66,8 @@
                 </div>
                 <div
                     class="w-full md:w-auto flex flex-col md:flex-row space-y-2 md:space-y-0 items-stretch md:items-center justify-end md:space-x-3 flex-shrink-0">
-                    {{-- add product --}}
-                    <button type="button" data-modal-target="plans-modal" data-modal-toggle="plans-modal"
+                    {{-- new payment --}}
+                    <button type="button" data-modal-target="payments-modal" data-modal-toggle="payments-modal"
                         class="flex items-center justify-center text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-4 py-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800">
 
                         <svg class="h-3.5 w-3.5 mr-2" fill="currentColor" viewbox="0 0 20 20"
@@ -75,7 +75,7 @@
                             <path clip-rule="evenodd" fill-rule="evenodd"
                                 d="M10 3a1 1 0 011 1v5h5a1 1 0 110 2h-5v5a1 1 0 11-2 0v-5H4a1 1 0 110-2h5V4a1 1 0 011-1z" />
                         </svg>
-                        Add Plans
+                        New Payment
                     </button>
 
                     <div class="flex items-center space-x-3 w-full md:w-auto">
@@ -183,7 +183,7 @@
 </section>
 
 <!--Add plans modal -->
-<div id="plans-modal" tabindex="-1" aria-hidden="true"
+<div id="payments-modal" tabindex="-1" aria-hidden="true"
     class="addPlans hidden overflow-y-auto overflow-x-hidden fixed top-0 right-0 left-0 z-50 justify-center items-center w-full md:inset-0 h-[calc(100%-1rem)] max-h-full">
     <div class="relative p-4 w-full max-w-xl max-h-full">
         <!-- Modal content -->
@@ -195,7 +195,7 @@
                 </h3>
                 <button type="button"
                     class="text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm w-8 h-8 ms-auto inline-flex justify-center items-center dark:hover:bg-gray-600 dark:hover:text-white"
-                    data-modal-toggle="plans-modal">
+                    data-modal-toggle="payments-modal">
                     <svg class="w-3 h-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none"
                         viewBox="0 0 14 14">
                         <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
@@ -207,18 +207,25 @@
             <!-- Modal body -->
             <form class="p-4 md:p-5" id="plans_form">
                 <div class="grid gap-4 mb-4 grid-cols-2">
-                     {{-- Full Name --}}
+
+                     {{-- Member Name --}}
                      <div class="col-span-2">
                         <label for="member_id" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Member Name</label>
                         <select id="member_id" name="member_id"
                             class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500">
-                            <option selected="">Select Member Name</option>
+                           
                             @foreach ($members as $item)
-                                <option value="{{ $item->id }}">{{ $item->fullName }}</option>
+                                <option value="{{ $item->member_id }}">{{ $item->member_id }}</option>
                             @endforeach
                            
                         </select>
                         
+                    </div>
+
+                    {{-- Monthly Installment --}}
+                    <div class="col-span-2 sm:col-span-1">
+                        <label for="monthly_installment" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Monthly Installment</label>
+                        <input type="number" id="monthly_installment" name="monthly_installment" aria-label="disabled input" class="bg-gray-100 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 cursor-not-allowed dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-gray-400 dark:focus:ring-blue-500 dark:focus:border-blue-500" value="input" disabled>
                     </div>
 
                     {{-- Plans Date --}}
@@ -248,42 +255,11 @@
                             placeholder="Enter plans amount">
                     </div>
 
-                    {{-- Plans Duration --}}
-                    <div class="col-span-2 sm:col-span-1">
-                        <label for="plans_duration"
-                            class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Duration</label>
-                        <select id="plans_duration" name="plans_duration"
-                            class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500">
-                            <option selected="">Select Plans Duration</option>
-                            <option value="12">12 Months</option>
-                            <option value="6">6 Months</option>
-                            <option value="3">3 Months</option>
-                        </select>
-                    </div>
+                    
 
-                    {{-- Monthly Installment --}}
-                    <div class="col-span-2 sm:col-span-1">
-                        <label for="monthly_installment" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Monthly Installment</label>
-                        <input type="number" id="monthly_installment" name="monthly_installment" aria-label="disabled input" class="bg-gray-100 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 cursor-not-allowed dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-gray-400 dark:focus:ring-blue-500 dark:focus:border-blue-500" value="input">
-                    </div>
+                  
                    
-                    {{-- Expire Date --}}
-                    <div class="col-span-2">
-                        <label class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
-                            for="expire_date">Expire Date</label>
-                        <div class="relative max-w-sm">
-                            <div class="absolute inset-y-0 start-0 flex items-center ps-3.5 pointer-events-none">
-                                <svg class="w-4 h-4 text-gray-500 dark:text-gray-400" aria-hidden="true"
-                                    xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 20">
-                                    <path
-                                        d="M20 4a2 2 0 0 0-2-2h-2V1a1 1 0 0 0-2 0v1h-3V1a1 1 0 0 0-2 0v1H6V1a1 1 0 0 0-2 0v1H2a2 2 0 0 0-2 2v2h20V4ZM0 18a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V8H0v10Zm5-8h10a1 1 0 0 1 0 2H5a1 1 0 0 1 0-2Z" />
-                                </svg>
-                            </div>
-                            <input datepicker id="expire_date" name="expire_date" type="text"
-                                class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full ps-10 p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                                placeholder="Select Expire Date">
-                        </div>
-                    </div>
+                    
                 </div>
 
                 <button type="submit"
@@ -295,71 +271,11 @@
                             d="M10 5a1 1 0 011 1v3h3a1 1 0 110 2h-3v3a1 1 0 11-2 0v-3H6a1 1 0 110-2h3V6a1 1 0 011-1z"
                             clip-rule="evenodd"></path>
                     </svg>
-                    Add new plans
+                    Save Payment
                 </button>
             </form>
         </div>
     </div>
 </div>
-
-{{-- <div class="min-h-screen flex items-center justify-center">
-    <div class="relative group">
-      <button id="dropdown-button" class="inline-flex justify-center w-full px-4 py-2 text-sm font-medium text-gray-700 bg-white border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-100 focus:ring-blue-500">
-        <span class="mr-2">Open Dropdown</span>
-        <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 ml-2 -mr-1" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
-          <path fill-rule="evenodd" d="M6.293 9.293a1 1 0 011.414 0L10 11.586l2.293-2.293a1 1 0 111.414 1.414l-3 3a1 1 0 01-1.414 0l-3-3a1 1 0 010-1.414z" clip-rule="evenodd" />
-        </svg>
-      </button>
-      <div id="dropdown-menu" class="hidden absolute right-0 mt-2 rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5 p-1 space-y-1">
-        <!-- Search input -->
-        <input id="search-input" class="block w-full px-4 py-2 text-gray-800 border rounded-md  border-gray-300 focus:outline-none" type="text" placeholder="Search items" autocomplete="off">
-        <!-- Dropdown content goes here -->
-        <a href="#" class="block px-4 py-2 text-gray-700 hover:bg-gray-100 active:bg-blue-100 cursor-pointer rounded-md">Uppercase</a>
-        <a href="#" class="block px-4 py-2 text-gray-700 hover:bg-gray-100 active:bg-blue-100 cursor-pointer rounded-md">Lowercase</a>
-        <a href="#" class="block px-4 py-2 text-gray-700 hover:bg-gray-100 active:bg-blue-100 cursor-pointer rounded-md">Camel Case</a>
-        <a href="#" class="block px-4 py-2 text-gray-700 hover:bg-gray-100 active:bg-blue-100 cursor-pointer rounded-md">Kebab Case</a>
-      </div>
-    </div>
-  </div>
-
-
-  <script>
-  // JavaScript to toggle the dropdown
-      const dropdownButton = document.getElementById('dropdown-button');
-      const dropdownMenu = document.getElementById('dropdown-menu');
-      const searchInput = document.getElementById('search-input');
-      let isOpen = false; // Set to true to open the dropdown by default
-      
-      // Function to toggle the dropdown state
-      function toggleDropdown() {
-        isOpen = !isOpen;
-        dropdownMenu.classList.toggle('hidden', !isOpen);
-      }
-      
-      // Set initial state
-      toggleDropdown();
-      
-      dropdownButton.addEventListener('click', () => {
-        toggleDropdown();
-      });
-      
-      // Add event listener to filter items based on input
-      searchInput.addEventListener('input', () => {
-        const searchTerm = searchInput.value.toLowerCase();
-        const items = dropdownMenu.querySelectorAll('a');
-      
-        items.forEach((item) => {
-          const text = item.textContent.toLowerCase();
-          if (text.includes(searchTerm)) {
-            item.style.display = 'block';
-          } else {
-            item.style.display = 'none';
-          }
-        });
-      });
-  </script> --}}
-
-
-
 
 @endsection
