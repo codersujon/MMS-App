@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\MemberController;
+use App\Http\Controllers\MemberPlanController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
@@ -17,6 +18,12 @@ Route::get('/members', [MemberController::class, 'index'])->name('members.index'
 Route::post('/members/store', [MemberController::class, 'store'])->name('members.store');
 Route::get('/members/list', [MemberController::class, 'memberList'])->name('members.list');
 Route::get('/members/destroy/{id}', [MemberController::class, 'destroy'])->name('members.destroy');
+
+// Members Plans
+Route::get('/members/plans', [MemberPlanController::class, 'index'])->name('members.plans.index');
+Route::post('/members/plans/store', [MemberPlanController::class, 'store'])->name('members.plans.store');
+Route::get('/members/plans/all', [MemberPlanController::class, 'allPlans'])->name('members.plans.all');
+Route::get('/members/plans/destroy/{id}', [MemberPlanController::class, 'destroyPlans'])->name('members.plans.destroy');
 
 
 Route::middleware('auth')->group(function () {
