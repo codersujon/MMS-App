@@ -13,6 +13,11 @@ return new class extends Migration
     {
         Schema::create('payments', function (Blueprint $table) {
             $table->id();
+            $table->date('payment_date');
+            $table->decimal('installment_amount', 10, 2);
+            $table->decimal('penalty_amount', 10, 2);
+            $table->decimal('total_amount', 10, 2);
+            $table->foreignId('installment_id')->references('id')->on('member_plans');
             $table->timestamps();
         });
     }

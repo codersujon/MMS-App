@@ -37,6 +37,8 @@ Route::get('/penalty/destroy/{id}', [PenaltySettingController::class, 'penaltyDe
 
 // Payments
 Route::get('/payments/all', [PaymentController::class, 'index'])->name('payments.all.index');
+Route::post('/payments/store', [PaymentController::class, 'store'])->name('payments.store');
+
 
 Route::get('/get-installment/{id}', [PaymentController::class, 'getInstallment'])->name('get-installment');
 

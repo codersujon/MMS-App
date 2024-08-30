@@ -427,12 +427,78 @@ $(document).ready(function () {
             dataType: "JSON",
             success: function(response){
                 var monthly_installment ="";
+                var installment_id = ""
                 $.each(response.allData, function(key, value){
                     monthly_installment += `${value.monthly_installment}`;
+                    installment_id += `${value.id}`;
                 });
-                $("#monthly_installment").val(monthly_installment)
+                $("#monthly_installment").val(parseInt(monthly_installment));
+                $("#installment_id").val(installment_id);
             }
        });
     });
+
+    // GET PENALTY PERCHANTAGE AND CALCULATE PENALTY AMOUNT AND TOTAL AMOUNT
+    $(document).on("change", "#penalty_days", function(){
+        let penalty_percentage = $(this).val();
+        let monthly_installment = parseFloat($("#monthly_installment").val());
+
+        const penalty_amount =  parseFloat((monthly_installment * penalty_percentage/100));
+        $("#penalty_amount").val(penalty_amount);
+
+        const total_amount = parseFloat(monthly_installment + penalty_amount);
+        $("#grand_total").val(Math.floor(total_amount));
+        
+    });
+
+
+    // ADD PAYMENTS
+    $("#payments_form").on("submit", function (e) {
+        e.preventDefault();
+        let installment_id = $("#installment_id").val();
+        let monthly_installment = $("#monthly_installment").val();
+        let penalty_amount = $("#penalty_amount").val();
+        let grand_total = $("#grand_total").val();
+
+        $.ajax({
+            url: "/payments/store",
+            method: "POST",
+            data: {
+                installment_id: installment_id,
+                monthly_installment: monthly_installment,
+                penalty_amount: penalty_amount,
+                total_amount: grand_total
+            },
+            dataType: "JSON",
+            success: function (data) {
+                if (data.status == 200) {
+
+                    // Handle success
+                    const Toast = Swal.mixin({
+                        toast: true,
+                        position: "top-end",
+                        showConfirmButton: false,
+                        timer: 3000,
+                        timerProgressBar: true,
+                        didOpen: (toast) => {
+                          toast.onmouseenter = Swal.stopTimer;
+                          toast.onmouseleave = Swal.resumeTimer;
+                        }
+                      });
+                      Toast.fire({
+                        icon: "success",
+                        title: data.message
+                      });
+
+                   
+                    $("#payments-modal").addClass('hidden');
+                    $(".inset-0").removeClass();
+                    $('#payments_form')[0].reset();
+                }
+            }
+        });
+    });
+
+
 
 });

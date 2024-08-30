@@ -191,7 +191,7 @@
             <!-- Modal header -->
             <div class="flex items-center justify-between p-4 md:p-5 border-b rounded-t dark:border-gray-600">
                 <h3 class="text-lg font-semibold text-gray-900 dark:text-white">
-                    Create New Plans
+                    Create New Payment
                 </h3>
                 <button type="button"
                     class="text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm w-8 h-8 ms-auto inline-flex justify-center items-center dark:hover:bg-gray-600 dark:hover:text-white"
@@ -205,7 +205,7 @@
                 </button>
             </div>
             <!-- Modal body -->
-            <form class="p-4 md:p-5" id="plans_form">
+            <form class="p-4 md:p-5" id="payments_form">
                 <div class="grid gap-4 mb-4 grid-cols-2">
 
                      {{-- Member Name --}}
@@ -213,7 +213,7 @@
                         <label for="member_id" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Member Name</label>
                         <select id="member_id" name="member_id"
                             class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500">
-                           
+                            <option value="">Select Name</option>
                             @foreach ($members as $item)
                                 <option value="{{ $item->member_id }}">{{ $item->member_id }}</option>
                             @endforeach
@@ -226,39 +226,36 @@
                     <div class="col-span-2 sm:col-span-1">
                         <label for="monthly_installment" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Monthly Installment</label>
                         <input type="number" id="monthly_installment" name="monthly_installment" aria-label="disabled input" class="bg-gray-100 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 cursor-not-allowed dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-gray-400 dark:focus:ring-blue-500 dark:focus:border-blue-500" value="input" disabled>
+                        <input type="number" name="installment_id" id="installment_id" class="hidden">
                     </div>
 
-                    {{-- Plans Date --}}
+                    {{-- Penalty Days --}} 
                     <div class="col-span-2 sm:col-span-1">
-                        <label for="plans_date" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Membership Plans 
-                            Date</label>
-                        <div class="relative max-w-sm">
-                            <div class="absolute inset-y-0 start-0 flex items-center ps-3.5 pointer-events-none">
-                                <svg class="w-4 h-4 text-gray-500 dark:text-gray-400" aria-hidden="true"
-                                    xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 20">
-                                    <path
-                                        d="M20 4a2 2 0 0 0-2-2h-2V1a1 1 0 0 0-2 0v1h-3V1a1 1 0 0 0-2 0v1H6V1a1 1 0 0 0-2 0v1H2a2 2 0 0 0-2 2v2h20V4ZM0 18a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V8H0v10Zm5-8h10a1 1 0 0 1 0 2H5a1 1 0 0 1 0-2Z" />
-                                </svg>
-                            </div>
-                            <input datepicker id="plans_date" type="text" name="plans_date"
-                                class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full ps-10 p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                                placeholder="Select plans date">
-                        </div>
+                        <label for="penalty_days" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Penalty Days</label>
+                        <select id="penalty_days" name="penalty_days"
+                            class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500">
+                            <option value="">Select Days</option>
+                            @foreach ($penalties as $item)
+                                <option value="{{ $item->penalty_percentage }}">{{ $item->penalty_days }} Days</option>
+                            @endforeach
+                        </select>
+                    </div>
+
+                    {{-- Penalty Amount --}}
+                    <div class="col-span-2 sm:col-span-1">
+                        <label for="penalty_amount"
+                            class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Penalty Percentage Amount</label>
+                        <input type="number" name="penalty_amount" id="penalty_amount"
+                            class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" disabled>
                     </div>
 
                      {{-- Total Amount --}}
                      <div class="col-span-2 sm:col-span-1">
-                        <label for="total_amount"
-                            class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Total Amount</label>
-                        <input type="number" name="total_amount" id="total_amount"
-                            class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
-                            placeholder="Enter plans amount">
+                        <label for="grand_total"
+                            class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Grand Total</label>
+                        <input type="number" name="grand_total" id="grand_total"
+                            class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" disabled>
                     </div>
-
-                    
-
-                  
-                   
                     
                 </div>
 
