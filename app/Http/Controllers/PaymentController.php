@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Member;
 use App\Models\MemberPlan;
 use App\Models\PenaltySetting;
 use App\Models\Payment;
@@ -13,7 +14,8 @@ class PaymentController extends Controller
     * Payment All Index
     */
     public function index(){
-        $members = MemberPlan::orderBy('member_id','DESC')->get();
+        // $members = MemberPlan::orderBy('member_id','DESC')->get();
+        $members = Member::get();
         $penalties = PenaltySetting::get();
         return view('backend.payments.index', compact('members','penalties'));
     }
