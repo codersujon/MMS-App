@@ -58,7 +58,7 @@
                     </svg>
                 </div>
                 <div class="px-4 text-gray-700">
-                    <h3 class="text-sm tracking-wider">Todays Payments</h3>
+                    <h3 class="text-sm tracking-wider">Todays Payment</h3>
                     <p class="text-3xl">{{ number_format($todays_payment, 2) }}</p>
                 </div>
             </div>

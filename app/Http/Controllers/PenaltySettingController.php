@@ -20,8 +20,8 @@ class PenaltySettingController extends Controller
 
      public function store(Request $request){
         $penalty = new PenaltySetting();
-        $penalty->penalty_percentage = $request->penalty_days;
-        $penalty->penalty_days = $request->penalty_perc;
+        $penalty->penalty_percentage = $request->penalty_perc;
+        $penalty->penalty_days = $request->penalty_days;
         $penalty->save();
 
         return response()->json([

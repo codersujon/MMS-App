@@ -237,7 +237,7 @@
                             </svg>
                             <div class="text-sm text-gray-900 dark:text-white">Members</div>
                         </a>
-                        <a href="#"
+                        {{-- <a href="#"
                             class="block p-4 text-center rounded-lg hover:bg-gray-100 dark:hover:bg-gray-600 group">
                             <svg aria-hidden="true"
                                 class="mx-auto mb-1 w-7 h-7 text-gray-400 group-hover:text-gray-500 dark:text-gray-400 dark:group-hover:text-gray-400"
@@ -247,8 +247,8 @@
                                     clip-rule="evenodd"></path>
                             </svg>
                             <div class="text-sm text-gray-900 dark:text-white">Inbox</div>
-                        </a>
-                        <a href="#"
+                        </a> --}}
+                        {{-- <a href="#"
                             class="block p-4 text-center rounded-lg hover:bg-gray-100 dark:hover:bg-gray-600 group">
                             <svg aria-hidden="true"
                                 class="mx-auto mb-1 w-7 h-7 text-gray-400 group-hover:text-gray-500 dark:text-gray-400 dark:group-hover:text-gray-400"
@@ -260,7 +260,7 @@
                             <div class="text-sm text-gray-900 dark:text-white">
                                 Profile
                             </div>
-                        </a>
+                        </a> --}}
                         <a href="{{ route('penalty.settings.index') }}"
                             class="block p-4 text-center rounded-lg hover:bg-gray-100 dark:hover:bg-gray-600 group">
                             <svg aria-hidden="true"
@@ -274,7 +274,7 @@
                                 Penalty Settings
                             </div>
                         </a>
-                        <a href="#"
+                        {{-- <a href="#"
                             class="block p-4 text-center rounded-lg hover:bg-gray-100 dark:hover:bg-gray-600 group">
                             <svg aria-hidden="true"
                                 class="mx-auto mb-1 w-7 h-7 text-gray-400 group-hover:text-gray-500 dark:text-gray-400 dark:group-hover:text-gray-400"
@@ -287,8 +287,8 @@
                             <div class="text-sm text-gray-900 dark:text-white">
                                 Products
                             </div>
-                        </a>
-                        <a href="#"
+                        </a> --}}
+                        <a href="{{ route('payments.all.index') }}"
                             class="block p-4 text-center rounded-lg hover:bg-gray-100 dark:hover:bg-gray-600 group">
                             <svg aria-hidden="true"
                                 class="mx-auto mb-1 w-7 h-7 text-gray-400 group-hover:text-gray-500 dark:text-gray-400 dark:group-hover:text-gray-400"
@@ -304,7 +304,7 @@
                                 Payments
                             </div>
                         </a>
-                        <a href="#"
+                        {{-- <a href="#"
                             class="block p-4 text-center rounded-lg hover:bg-gray-100 dark:hover:bg-gray-600 group">
                             <svg aria-hidden="true"
                                 class="mx-auto mb-1 w-7 h-7 text-gray-400 group-hover:text-gray-500 dark:text-gray-400 dark:group-hover:text-gray-400"
@@ -316,7 +316,7 @@
                             <div class="text-sm text-gray-900 dark:text-white">
                                 Billing
                             </div>
-                        </a>
+                        </a> --}}
                         <a href="{{ route('logout') }}"
                             class="block p-4 text-center rounded-lg hover:bg-gray-100 dark:hover:bg-gray-600 group">
                             <svg aria-hidden="true"

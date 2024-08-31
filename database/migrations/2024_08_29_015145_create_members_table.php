@@ -17,9 +17,9 @@ return new class extends Migration
             $table->date('dob');
             $table->enum('gender', ['male', 'female', 'others']);
             $table->string('email', 100);
-            $table->string('phone', 15);
+            $table->string('phone', 50);
             $table->string('image')->nullable();
-            $table->string('occupation');
+            $table->string('occupation')->nullable();
             $table->longtext('address');
             $table->date('join_date');
             $table->boolean('status')->default(1);

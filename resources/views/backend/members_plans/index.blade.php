@@ -72,9 +72,7 @@
                             <th scope="col" class="px-4 py-3">Monthly Installment</th>
                             <th scope="col" class="px-4 py-3">Plans Expire Date</th>
                             <th scope="col" class="px-4 py-3">Status</th>
-                            <th scope="col" class="px-4 py-3">
-                                <span class="sr-only">Actions</span>
-                            </th>
+                            <th scope="col" class="px-4 py-3">Actions</th>
                         </tr>
                     </thead>
                     <tbody class="InstallmentsList">

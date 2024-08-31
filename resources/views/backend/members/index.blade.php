@@ -77,9 +77,7 @@
                             <th scope="col" class="px-4 py-3">Joning Date</th>
                             <th scope="col" class="px-4 py-3">Status</th>
                             <th scope="col" class="px-4 py-3">Expire Date</th>
-                            <th scope="col" class="px-4 py-3">
-                                <span class="sr-only">Actions</span>
-                            </th>
+                            <th scope="col" class="px-4 py-3">Actions</th>
                         </tr>
                     </thead>
                     <tbody class="memberList">

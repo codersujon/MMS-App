@@ -58,9 +58,7 @@
                             <th scope="col" class="px-4 py-3">#Id</th>
                             <th scope="col" class="px-4 py-3">Penalty Days</th>
                             <th scope="col" class="px-4 py-3">Penalty percentage (%)</th>
-                            <th scope="col" class="px-4 py-3">
-                                <span class="sr-only">Actions</span>
-                            </th>
+                            <th scope="col" class="px-4 py-3">Actions</th>
                         </tr>
                     </thead>
                     <tbody class="PenaltyList">
