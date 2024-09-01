@@ -153,7 +153,7 @@ $(document).ready(function () {
         let plans_duration = $("#plans_duration").val();
         let monthly_installment = (total_amount / plans_duration);
         if(total_amount && plans_duration){
-            $("#monthly_installment").val(monthly_installment);
+            $("#monthly_installment").val(monthly_installment.toFixed(2));
         }else{
             $("#monthly_installment").val("");
         }
@@ -450,7 +450,6 @@ $(document).ready(function () {
         
     });
 
-
     // ADD PAYMENTS
     $("#payments_form").on("submit", function (e) {
         e.preventDefault();
@@ -578,7 +577,5 @@ $(document).ready(function () {
         });
 
     });
-
-
 
 });
