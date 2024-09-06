@@ -56,6 +56,7 @@ Route::middleware('auth')->group(function(){
         Route::get('/payments/list', 'allPayments')->name('payments.list');
         Route::get('/payments/destroy/{id}', 'destroy')->name('payments.destroy');
         Route::get('/get-installment/{id}', 'getInstallment')->name('get-installment');
+        Route::get('/get-plans/{id}', 'getPlans')->name('get-plans');
     });
 });
 

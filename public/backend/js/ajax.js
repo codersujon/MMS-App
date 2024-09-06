@@ -415,15 +415,35 @@ $(document).ready(function () {
 
     });
 
-     // GET INSTALLMENT AMOUNT WITH THE HELP OF MEMBER ID
-     $(document).on("change", "#member_id", function(){
+    // GET INSTALLMENT ALL PLANS
+    $(document).on("change", "#member_id", function(){
         var member_id = $(this).val();
-        
-       $.ajax({
-            url: "/get-installment/" + member_id,
+
+        $.ajax({
+            url: "/get-plans/" + member_id,
             type: "GET",
             dataType: "JSON",
             success: function(response){
+                var Data =`<option value="">Select Plans Id</option>`;
+                $.each(response.allData, function(key, value){
+                    Data += `<option value="${value.id}">#Id: ${ value.id } [ Total Amount: ${value.total_amount} ]</option>`;
+                });
+                $("#plans_id").html(Data);
+            }
+       });
+    });
+
+
+     // GET INSTALLMENT AMOUNT WITH THE HELP OF PLANS ID
+     $(document).on("change", "#plans_id", function(){
+        var plans_id = $(this).val();
+        
+       $.ajax({
+            url: "/get-installment/" + plans_id,
+            type: "GET",
+            dataType: "JSON",
+            success: function(response){
+                console.log(response.allData);
                 var monthly_installment ="";
                 var installment_id = ""
                 $.each(response.allData, function(key, value){
@@ -511,6 +531,7 @@ $(document).ready(function () {
 
                         <tr class="border-b dark:border-gray-700">
                             <td class="px-4  py-1">${key+1}</td>
+                            <td class="px-4 py-1">${val.installment_id}</td>
                             <td class="px-4 py-1">${val.payment_date}</td>
                             <td class="px-4 py-1">${val.installment_amount}</td>
                             <td class="px-4 py-1">${val.penalty_amount}</td>

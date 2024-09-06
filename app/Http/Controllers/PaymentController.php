@@ -14,18 +14,27 @@ class PaymentController extends Controller
     * Payment All Index
     */
     public function index(){
-        // $members = MemberPlan::orderBy('member_id','DESC')->get();
-        $members = Member::get();
+        $members = Member::withWhereHas('memberplan')->get();
         $penalties = PenaltySetting::get();
         return view('backend.payments.index', compact('members','penalties'));
     }
 
+    /**
+     * Get Plans ID
+     */
+    public function getPlans(String $id){
+        $plans = MemberPlan::where('member_id', $id)->get();
+        return response()->json([
+            'status' => 200,
+            'allData' => $plans
+        ]);
+    }
 
     /**
      * Get Installment
      */
     public function getInstallment(String $id){
-        $Installments = MemberPlan::where('member_id', $id)->get();
+        $Installments = MemberPlan::where('id', $id)->get();
         return response()->json([
             'status' => 200,
             'allData' => $Installments
@@ -49,13 +58,14 @@ class PaymentController extends Controller
             'status'=> 200,
             'message' => "Payment Created Successfully!",
         ]);
+
     }
 
     /**
      * All Payment List
      */
     public function allPayments(){
-        $payments = Payment::orderBy('payment_date','DESC')->get();
+        $payments = Payment::with('memberplan')->get();
         return response()->json(['status'=> 200, 'AllData' => $payments]);
     }
 
