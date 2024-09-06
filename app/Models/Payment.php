@@ -15,4 +15,8 @@ class Payment extends Model
         'total_amount', 
         'installment_id'
     ];
+
+    public function memberplan(){
+        return $this->belongsTo(MemberPlan::class);
+    }
 }

@@ -13,4 +13,8 @@ class MemberPlan extends Model
     public function member(){
         return $this->belongsTo(Member::class);
     }
+
+    public function payment(){
+        return $this->hasMany(Payment::class);
+    }
 }
