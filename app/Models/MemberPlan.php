@@ -9,4 +9,8 @@ class MemberPlan extends Model
 {
     use HasFactory;
     protected $fillable = ['amount', 'plans_duration', 'payment_date'];
+
+    public function member(){
+        return $this->belongsTo(Member::class);
+    }
 }

@@ -40,7 +40,8 @@ class MemberPlanController extends Controller
      * All Plans
      */
     public function allPlans(){
-        $plans = MemberPlan::latest()->get();
+        $plans = MemberPlan::with('member')->get();
+        
         return response()->json([
             'status'=> 200,
             'AllData' => $plans,

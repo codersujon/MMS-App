@@ -50,7 +50,6 @@ $(document).ready(function () {
 
     //Member List
     memberList();
-
     function memberList() {
         $.ajax({
             url: "/members/list",
@@ -153,7 +152,7 @@ $(document).ready(function () {
         let plans_duration = $("#plans_duration").val();
         let monthly_installment = (total_amount / plans_duration);
         if(total_amount && plans_duration){
-            $("#monthly_installment").val(monthly_installment.toFixed(2));
+            $("#monthly_installment").val(Math.round(monthly_installment));
         }else{
             $("#monthly_installment").val("");
         }
@@ -216,7 +215,7 @@ $(document).ready(function () {
 
                         <tr class="border-b dark:border-gray-700">
                             <td class="px-4  py-1">${key+1}</td>
-                            <td class="px-4 py-1">${val.member_id}</td>
+                            <td class="px-4 py-1">${val.member.fullName}</td>
                             <td class="px-4 py-1">${val.payment_date}</td>
                             <td class="px-4 py-1">${val.total_amount} </td>
                             <td class="px-4 py-1">${val.plans_duration} Months</td>
